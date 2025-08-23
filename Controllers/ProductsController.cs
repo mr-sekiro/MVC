@@ -1,7 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MVC.Models;
 using System;
 using System.ComponentModel;
+using System.Reflection;
+using System.Reflection.PortableExecutable;
+using System.Xml.Linq;
 using static System.Collections.Specialized.BitVector32;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 //Actions
 // Is a method must meet certain requirements
@@ -28,6 +33,21 @@ using static System.Collections.Specialized.BitVector32;
 //If you have a helper method inside a controller, you don’t want ASP.NET Core to expose it as an endpoint.
 //That’s where [NonAction] comes in.
 
+//Model Binding [Action Parameters]
+//Is the Process of automatically mapping incoming HTTP request data to action method parameters or model properties
+
+//Value Providers[In Order]
+//	- Form
+//	- Route Data
+//	- Query String
+//	- Request Body
+//	- Request Header
+
+//Model Data Can Be 
+// Simple Data => Name
+// Complex Data => Object.Attribute, Attributes
+// Mixed Data => Any Match
+// Collection => Name Accumulatively, [index]
 namespace MVC.Controllers
 {
     [Route("Products")] //Attribute Routing
@@ -81,6 +101,24 @@ namespace MVC.Controllers
             //return Redirect("https://localhost:44387/Products/GetProduct/10");
             //return Redirect("https://www.apple.com/eg/iphone-16-pro/");
         }
+
+        [HttpPost]
+        [Route("TestModelBinding")]
+        public IActionResult TestModelBinding([FromQuery] int id, [FromQuery] string name)
+        {
+            return Content($"Product id: {id}<br>Product Name: {name}", "text/html");
+        }
+
+        [HttpPost]
+        [Route("AddProduct")]
+        public IActionResult AddProduct([FromBody] Product product) // [FromHeader] is not workink with complex data
+        {
+            if (product == null)
+                return BadRequest();
+            else
+                return Content($"Product id: {product.Id}<br>Product Name: {product.Name}", "text/html");
+        }
+
         [NonAction]
         public void Test()
         {
