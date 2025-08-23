@@ -46,3 +46,17 @@ Built-in Action Results in ASP.NET Core MVC
 | `OkObjectResult`         | `return Ok(new { Id = 1, Name = "Test" });`                      | Returns HTTP 200 OK with an object (JSON)                 |
 | `BadRequestResult`       | `return BadRequest();`                                           | Returns HTTP 400 Bad Request                              |
 | `BadRequestObjectResult` | `return BadRequest("Invalid input");`                            | Returns HTTP 400 Bad Request with error details           |
+
+
+---------------------------------------------------------------------
+
+Client-Side Libraries 
+Library contains front-end resources can manage these libraries using LibMan (Library Manager) or via CDN
+
+---------------------------------------------------------------------
+
+<!--HTML Comment-->
+@* Razor Comment *@
+@{
+   //CSharp Comment
+}

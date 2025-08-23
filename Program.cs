@@ -26,15 +26,16 @@ namespace MVC
             }
 
             app.UseRouting();
-
+            app.UseStaticFiles();
             //The process of mapping incoming HTTP requests to specific controlleractions or endpoints
             //  Conventional Routing => You define a general pattern for routes.
             //  Attribute Routing => You decorate controllers/actions with [Route] attributes, More control over URL structure.
 
             //HTTP://BaseURL/SEGMENT/{SEGMENT}/X{SEGMENT}
             //               static  varible   mixed
-            app.MapGet("/", () => "Hello Abdullah!");
-            app.MapGet("/Test", () => "Testing ........!");
+
+            //app.MapGet("/", () => "Hello Abdullah!");
+            //app.MapGet("/Test", () => "Testing ........!");
 
             //app.MapGet("/{name}", async context =>
             //{
@@ -44,11 +45,12 @@ namespace MVC
             //});
 
             //// Conventional Routing
-            //app.MapControllerRoute(
-            //    "Default",
-            //    "{controller}/{action}/{id?}",//id is Optional
-            //    new { action = "Index" },
-            //    new { Id = new IntRouteConstraint() });
+            app.MapControllerRoute(
+                "Default",
+                "{controller}/{action}/{id?}",//id is Optional
+                new { controller = "Home", action = "Index" }
+                //new { Id = new IntRouteConstraint() }
+                );
 
             //app.MapControllerRoute(
             //    "Default",
