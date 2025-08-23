@@ -22,3 +22,27 @@ Built-in Route Constraints
 | `alpha`             | `{name:alpha}`               | Only letters                |
 | `regex(expression)` | `{slug:regex(^[a-z0-9-]+$)}` | Matches regex               |
 | `required`          | `{value:required}`           | Must be present (not empty) |
+
+-----------------------------------------------------------------------------------
+
+Built-in Action Results in ASP.NET Core MVC
+
+| Action Result            | Example                                                          | Meaning                                                   |
+| ------------------------ | ---------------------------------------------------------------- | --------------------------------------------------------- |
+| `ViewResult`             | `return View("Index");`                                          | Renders a Razor view (HTML + markup)                      |
+| `EmptyResult`            | `return new EmptyResult();`                                      | Returns nothing (empty response)                          |
+| `RedirectResult`         | `return Redirect("/Home/Index");`                                | Redirects to a different URL                              |
+| `RedirectToAction`       | `return RedirectToAction("Index", "Home");`                      | Redirects to a specific controller action                 |
+| `JsonResult`             | `return Json(new { Id = 1, Name = "Laptop" });`                  | Returns JSON data (useful for AJAX / APIs)                |
+| `ContentResult`          | `return Content("Hello World!");`                                | Returns plain text or custom content                      |
+| `FileContentResult`      | `return File(fileBytes, "text/plain", "sample.txt");`            | Returns a file from a byte array                          |
+| `FilePathResult`         | `return PhysicalFile("wwwroot/files/sample.txt", "text/plain");` | Returns a file from a physical path                       |
+| `FileStreamResult`       | `return File(stream, "text/plain", "sample.txt");`               | Returns a file from a stream                              |
+| `StatusCodeResult`       | `return StatusCode(404);`                                        | Returns a specific HTTP status code (e.g., 404 Not Found) |
+| `UnauthorizedResult`     | `return Unauthorized();`                                         | Returns HTTP 401 Unauthorized                             |
+| `ForbidResult`           | `return Forbid();`                                               | Returns HTTP 403 Forbidden                                |
+| `NotFoundResult`         | `return NotFound();`                                             | Returns HTTP 404 Not Found                                |
+| `OkResult`               | `return Ok();`                                                   | Returns HTTP 200 OK (empty body)                          |
+| `OkObjectResult`         | `return Ok(new { Id = 1, Name = "Test" });`                      | Returns HTTP 200 OK with an object (JSON)                 |
+| `BadRequestResult`       | `return BadRequest();`                                           | Returns HTTP 400 Bad Request                              |
+| `BadRequestObjectResult` | `return BadRequest("Invalid input");`                            | Returns HTTP 400 Bad Request with error details           |
