@@ -1,0 +1,24 @@
+Route Constraints in ASP.NET Core MVC.
+Constraints help you control what values are valid for route parameters.
+
+Why use constraints?
+
+Ensure correct format (e.g., numeric IDs, dates).
+Prevent invalid routes from matching.
+Reduce errors before hitting the controller logic.
+
+Built-in Route Constraints
+| Constraint          | Example                      | Meaning                     |
+| ------------------- | ---------------------------- | --------------------------- |
+| `int`               | `{id:int}`                   | Must be an integer          |
+| `bool`              | `{active:bool}`              | Must be true/false          |
+| `datetime`          | `{date:datetime}`            | Must be a valid DateTime    |
+| `decimal`           | `{price:decimal}`            | Must be decimal             |
+| `guid`              | `{id:guid}`                  | Must be a GUID              |
+| `minlength(length)` | `{name:minlength(3)}`        | At least 3 chars            |
+| `maxlength(length)` | `{name:maxlength(10)}`       | Max 10 chars                |
+| `length(length)`    | `{code:length(5)}`           | Exactly 5 chars             |
+| `range(min,max)`    | `{age:range(18,65)}`         | Integer in range            |
+| `alpha`             | `{name:alpha}`               | Only letters                |
+| `regex(expression)` | `{slug:regex(^[a-z0-9-]+$)}` | Matches regex               |
+| `required`          | `{value:required}`           | Must be present (not empty) |

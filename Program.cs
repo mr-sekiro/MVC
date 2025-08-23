@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Routing.Constraints;
+using System.Text;
 
 namespace MVC
 {
@@ -18,16 +20,41 @@ namespace MVC
 
             #region Configure
 
-            if (app.Environment.IsDevelopment()) 
+            if (app.Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
             app.UseRouting();
 
+            //The process of mapping incoming HTTP requests to specific controlleractions or endpoints
+            //  Conventional Routing => You define a general pattern for routes.
+            //  Attribute Routing => You decorate controllers/actions with [Route] attributes, More control over URL structure.
+
+            //HTTP://BaseURL/SEGMENT/{SEGMENT}/X{SEGMENT}
+            //               static  varible   mixed
             app.MapGet("/", () => "Hello Abdullah!");
             app.MapGet("/Test", () => "Testing ........!");
 
+            //app.MapGet("/{name}", async context =>
+            //{
+            //    var Name = context.GetRouteValue("name");
+            //    await context.Response.WriteAsync($"Hello {Name}");
+            //    //await context.Response.WriteAsync($"Hello {context.Request.RouteValues["name"]}");
+            //});
+
+            //// Conventional Routing
+            //app.MapControllerRoute(
+            //    "Default",
+            //    "{controller}/{action}/{id?}",//id is Optional
+            //    new { action = "Index" },
+            //    new { Id = new IntRouteConstraint() });
+
+            //app.MapControllerRoute(
+            //    "Default",
+            //  "{controller}/{action=Index}/{id:regex(\\d{{2}}$)?}");
+
+            app.MapControllers();   // For [Route] attributes
             #endregion
 
             app.Run();
