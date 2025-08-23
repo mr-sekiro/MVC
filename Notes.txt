@@ -54,9 +54,26 @@ Client-Side Libraries
 Library contains front-end resources can manage these libraries using LibMan (Library Manager) or via CDN
 
 ---------------------------------------------------------------------
+Views:
 
+View handles the app's data presentation and user interaction. A view is an HTML template with embedded Razor markup
+
+---------------------------------------------------------------------
+Layout:
+
+Special type of Razor view used to define a consistent structure for multiple pages in your application 
+It helps you avoid repeating common HTML elements (like headers, footers, and navigation bars) across multiple views
+
+---------------------------------------------------------------------
 <!--HTML Comment-->
 @* Razor Comment *@
 @{
    //CSharp Comment
 }
+---------------------------------------------------------------------
+
+TagHelpers:
+ A powerful feature that allows you to add server-side logic to your HTML in a clean, HTML-like syntax.
+  HTML tags => When content is static and doesn’t need server-side logic 
+  HTML helpers => When you need dynamic routing, forms, or model binding but are in ASP.NET Framework MVC projects.
+  Tag helpers => Recommended for modern ASP.NET Core projects

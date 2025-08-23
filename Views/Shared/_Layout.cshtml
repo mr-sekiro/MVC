@@ -1,0 +1,50 @@
+﻿@* @addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers *@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    @* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css" integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> *@
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css" />
+</head>
+<body>
+    @* Start Header *@
+    <header>
+        <center>
+            <nav class="mt-2">
+                @* HTML Tags / Static HTML *@
+                <a href="/Home/Index" class="btn btn-primary m-2">Home</a>
+                @* HTML Helpers / server-side [Generate HTML Tags Dynamically] *@
+                @Html.ActionLink(
+                linkText: "Privacy",
+                                actionName: "Privacy",
+                                controllerName: "Home",
+                                routeValues: null,
+                                htmlAttributes: new { @class = "btn btn-warning m-2" }
+                                )
+
+                @* Tag Helper *@
+                <a asp-controller="Home" asp-action="AboutUs" class="btn btn-success m-2">About Us</a>
+
+                <a href="/Home/ContactUs" class="btn btn-secondary m-2">Contact Us</a>
+                <a href="/Account/SignIn" class="btn btn-info m-2">Sign In</a>
+                <a href="/Account/Register" class="btn btn-danger m-2">Register</a>
+            </nav>
+        </center>
+    </header>
+    @* End Header *@
+    <div>
+        @RenderBody()
+    </div>
+    @* Start Footer *@
+    <footer>
+        <center>
+            <div>
+                <p>CopyRights &copy; mr Sekiro @DateTime.Now.Year</p>
+            </div>
+        </center>
+    </footer>
+    @* End Footer *@
+</body>
+</html>
